@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Pokedex.Api.Service;
 
 namespace Pokedex.Api
 {
@@ -12,6 +13,7 @@ namespace Pokedex.Api
 				{
 						services.AddControllers();
 						services.AddHttpClient();
+						services.AddPokedexService();
 						services.AddSwaggerGen(c =>
 						{
 								c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pokedex", Version = "v1" });

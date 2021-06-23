@@ -1,14 +1,28 @@
-﻿using System.Net.Http;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Pokedex.Api.Service.Proxy.Pokemon.Dto;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Pokedex.Api.Service.Proxy.Pokemon
 {
-		public class PokemonProxy
+		public class PokemonProxy : IPokemonProxy
 		{
-				private readonly IHttpClientFactory httpClient;
+				private readonly IHttpClientFactory httpClientFactory;
+				private readonly string baseUrl;
 
-				public PokemonProxy(IHttpClientFactory httpClient)
+				public PokemonProxy(IHttpClientFactory httpClientFactory, IConfiguration configuration)
 				{
-						this.httpClient = httpClient;
+						this.httpClientFactory = httpClientFactory;
+						baseUrl = configuration.GetSection("Proxy").GetSection("PokemonBaseUrl").Value;
+				}
+
+				public async Task<PokemonGetResponse> GetAsync(string name)
+				{
+						var httpClient = httpClientFactory.CreateClient();
+						var httpResponse = await httpClient.GetAsync($"{baseUrl}v2/pokemon-species/{name}");
+						var json = await httpResponse.Content.ReadAsStringAsync();
+						return JsonConvert.DeserializeObject<PokemonGetResponse>(json);
 				}
 
 		}
