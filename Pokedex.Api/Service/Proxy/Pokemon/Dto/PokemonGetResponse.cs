@@ -30,11 +30,5 @@ namespace Pokedex.Api.Service.Proxy.Pokemon.Dto
 		{
 				public int Id { get; set; }
 				public string Name { get; set; }
-				public IList<Name> Names { get; set; }
-		}
-
-		internal class Name
-		{
-				public string name { get; set; }
 		}
 }
