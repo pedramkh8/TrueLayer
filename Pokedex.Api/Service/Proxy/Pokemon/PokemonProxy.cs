@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Api.Service.Proxy.Pokemon
 {
-		public class PokemonProxy : IPokemonProxy
+		internal class PokemonProxy : IPokemonProxy
 		{
 				private readonly IHttpClientFactory httpClientFactory;
 				private readonly string baseUrl;

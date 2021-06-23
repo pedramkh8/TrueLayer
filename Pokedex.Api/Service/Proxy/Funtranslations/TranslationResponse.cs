@@ -1,17 +1,17 @@
 ﻿namespace Pokedex.Api.Service.Proxy.Funtranslations
 {
-		public class TranslationResponse
+		internal class TranslationResponse
 		{
 				public Success Success { get; set; }
 				public Content Contents { get; set; }
 		}
 
-		public class Success
+		internal class Success
 		{
 				public int Total { get; set; }
 		}
 
-		public class Content
+		internal class Content
 		{
 				public string Translated { get; set; }
 				public string Text { get; set; }

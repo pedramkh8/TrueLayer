@@ -11,6 +11,7 @@ namespace Pokedex.Api.Service
 				{
 						service.AddScoped<IFuntranslationsProxy, FuntranslationsProxy>();
 						service.AddScoped<IPokemonProxy, PokemonProxy>();
+						service.AddScoped<IPokemonService, PokemonService>();
 						return service;
 				}
 		}
