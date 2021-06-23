@@ -17,19 +17,13 @@ namespace Pokedex.Api.Service.Proxy.Pokemon.Dto
 				[JsonProperty("flavor_text_entries")]
 				public IList<FlavorTextEntry> FlavorTextEntries { get; set; }
 
-				[JsonProperty("evolution_chain")]
-				public EvolutionChain EvolutionChain { get; set; }
+				public Habitat Habitat { get; set; }
 		}
 
 		public class FlavorTextEntry
 		{
 				[JsonProperty("flavor_text")]
 				public string FlavorText { get; set; }
-		}
-
-		internal class EvolutionChain
-		{
-				public Habitat Habitat { get; set; }
 		}
 
 		internal class Habitat

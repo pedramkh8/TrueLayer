@@ -14,7 +14,7 @@ namespace Pokedex.Api.Service.Proxy.Pokemon
 				public PokemonProxy(IHttpClientFactory httpClientFactory, IConfiguration configuration)
 				{
 						this.httpClientFactory = httpClientFactory;
-						baseUrl = configuration.GetSection("Proxy").GetSection("PokemonBaseUrl").Value;
+						baseUrl = configuration.GetSection("ThirdParties").GetSection("PokemonBaseUrl").Value;
 				}
 
 				public async Task<PokemonGetResponse> GetAsync(string name)

@@ -1,6 +1,6 @@
 ﻿namespace Pokedex.Api.Dto
 {
-		internal class GetResponse
+		public class GetResponse
 		{
 				public string Name { get; set; }
 				public string Description { get; set; }

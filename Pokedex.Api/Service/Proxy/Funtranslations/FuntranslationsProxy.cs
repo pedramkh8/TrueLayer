@@ -14,7 +14,7 @@ namespace Pokedex.Api.Service.Proxy.Shakespeare
 				public FuntranslationsProxy(IHttpClientFactory httpClientFactory, IConfiguration configuration)
 				{
 						this.httpClientFactory = httpClientFactory;
-						baseUrl = configuration.GetSection("Proxy").GetSection("FuntranslationsBaseUrl").Value;
+						baseUrl = configuration.GetSection("ThirdParties").GetSection("FuntranslationsBaseUrl").Value;
 				}
 
 				public async Task<TranslationResponse> GetShakespeareTranslation(string description)
