@@ -1,4 +1,5 @@
 ﻿using Pokedex.Api.Dto;
+using Pokedex.Api.Enumeration;
 using Pokedex.Api.Service.Proxy.Funtranslations;
 using Pokedex.Api.Service.Proxy.Pokemon;
 using System;
@@ -44,7 +45,7 @@ namespace Pokedex.Api.Service
 
 						try
 						{
-								if (pokemon.Habitat == "cave" || pokemon.IsLegendary)
+								if (pokemon.Habitat == Habitat.cave.ToString() || pokemon.IsLegendary)
 								{
 										result.Description = (await funtranslationsProxy.GetYodaTranslation(pokemon.Description)).Contents.Translated;
 								}
