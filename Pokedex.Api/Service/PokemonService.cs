@@ -15,7 +15,7 @@ namespace Pokedex.Api.Service
 				private readonly IFuntranslationsProxy funtranslationsProxy;
 				private readonly ILogger<PokemonService> logger;
 
-				public PokemonService(IPokemonProxy pokemonProxy, 
+				public PokemonService(IPokemonProxy pokemonProxy,
 						IFuntranslationsProxy funtranslationsProxy,
 						ILogger<PokemonService> logger)
 				{
@@ -45,8 +45,8 @@ namespace Pokedex.Api.Service
 				public async Task<GetResponse> Translate(string name)
 				{
 						var pokemon = await GetPokemonAsync(name);
-					
-						if(pokemon is null)
+
+						if (pokemon is null)
 						{
 								return null;
 						}
@@ -61,13 +61,15 @@ namespace Pokedex.Api.Service
 
 						try
 						{
+								string normalDescription = RemoveNewLine(pokemon.Description);
+
 								if (pokemon.Habitat == Habitat.cave.ToString() || pokemon.IsLegendary)
 								{
-										result.Description = (await funtranslationsProxy.GetYodaTranslation(pokemon.Description)).Contents.Translated;
+										result.Description = (await funtranslationsProxy.GetYodaTranslation(normalDescription)).Contents.Translated;
 								}
 								else
 								{
-										result.Description = (await funtranslationsProxy.GetShakespeareTranslation(pokemon.Description)).Contents.Translated;
+										result.Description = (await funtranslationsProxy.GetShakespeareTranslation(normalDescription)).Contents.Translated;
 								}
 						}
 						catch (Exception ex)
@@ -76,6 +78,11 @@ namespace Pokedex.Api.Service
 						}
 
 						return result;
+				}
+
+				private string RemoveNewLine(string text)
+				{
+						return System.Text.RegularExpressions.Regex.Replace(text, @"\t|\n|\r", "");
 				}
 		}
 }
