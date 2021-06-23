@@ -42,7 +42,7 @@ namespace Pokedex.Api
 								endpoints.MapControllers();
 						});
 
-						logger.LogInformation("Gls Subscription Started!");
+						logger.LogInformation("Pokedex Started!");
 				}
 		}
 }
