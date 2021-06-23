@@ -1,6 +1,6 @@
 ﻿namespace Pokedex.Api.Dto
 {
-		public class GetResponse
+		public class PokemonResponse
 		{
 				public string Name { get; set; }
 				public string Description { get; set; }

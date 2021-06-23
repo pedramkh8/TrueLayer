@@ -20,26 +20,15 @@ namespace Pokedex.Api.Controllers.v1
 				{
 						var result = await pokemonService.GetPokemonAsync(name);
 						
-						if(result == null)
-						{
-								return NotFound();
-						}
-
-						return Ok(result);
-
+						return result.Success ?  Ok(result): BadRequest(result);
 				}
 
 				[HttpGet("translated/{name}")]
 				public async Task<IActionResult> GetFun(string name)
 				{
-						var result = await pokemonService.Translate(name);
+						var result = await pokemonService.TranslateAsync(name);
 
-						if (result == null)
-						{
-								return NotFound();
-						}
-
-						return Ok(result);
+						return result.Success ? Ok(result) : BadRequest(result);
 				}
 		}
 }

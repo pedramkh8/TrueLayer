@@ -5,7 +5,7 @@ namespace Pokedex.Api.Service
 {
 		public interface IPokemonService
 		{
-				Task<GetResponse> GetPokemonAsync(string name);
-				Task<GetResponse> Translate(string name);
+				Task<ServiceResult<PokemonResponse>> GetPokemonAsync(string name);
+				Task<ServiceResult<PokemonResponse>> TranslateAsync(string name);
 		}
 }
