@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Pokedex.Api.Middleware;
 using Pokedex.Api.Service;
 
 namespace Pokedex.Api
@@ -20,7 +22,7 @@ namespace Pokedex.Api
 						});
 				}
 
-				public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+				public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
 				{
 						if (env.IsDevelopment())
 						{
@@ -28,6 +30,8 @@ namespace Pokedex.Api
 								app.UseSwagger();
 								app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokedex v1"));
 						}
+
+						app.UseMiddleware<ErrorLoggingMiddleware>();
 
 						app.UseHttpsRedirection();
 
@@ -37,6 +41,8 @@ namespace Pokedex.Api
 						{
 								endpoints.MapControllers();
 						});
+
+						logger.LogInformation("Gls Subscription Started!");
 				}
 		}
 }

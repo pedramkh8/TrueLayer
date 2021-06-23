@@ -1,4 +1,5 @@
-﻿using Pokedex.Api.Dto;
+﻿using Microsoft.Extensions.Logging;
+using Pokedex.Api.Dto;
 using Pokedex.Api.Enumeration;
 using Pokedex.Api.Service.Proxy.Funtranslations;
 using Pokedex.Api.Service.Proxy.Pokemon;
@@ -12,29 +13,44 @@ namespace Pokedex.Api.Service
 		{
 				private readonly IPokemonProxy pokemonProxy;
 				private readonly IFuntranslationsProxy funtranslationsProxy;
+				private readonly ILogger<PokemonService> logger;
 
-				public PokemonService(IPokemonProxy pokemonProxy, IFuntranslationsProxy funtranslationsProxy)
+				public PokemonService(IPokemonProxy pokemonProxy, 
+						IFuntranslationsProxy funtranslationsProxy,
+						ILogger<PokemonService> logger)
 				{
 						this.pokemonProxy = pokemonProxy;
 						this.funtranslationsProxy = funtranslationsProxy;
+						this.logger = logger;
 				}
 
 				public async Task<GetResponse> GetPokemonAsync(string name)
 				{
 						var result = await pokemonProxy.GetAsync(name);
 
-						return new GetResponse
+						if (result != null)
 						{
-								Description = result.FlavorTextEntries.FirstOrDefault()?.FlavorText,
-								Habitat = result.Habitat?.Name,
-								IsLegendary = result.IsLegendary,
-								Name = result.Name
-						};
+								return new GetResponse
+								{
+										Description = result.FlavorTextEntries.FirstOrDefault()?.FlavorText,
+										Habitat = result.Habitat?.Name,
+										IsLegendary = result.IsLegendary,
+										Name = result.Name
+								};
+						}
+
+						return null;
 				}
 
 				public async Task<GetResponse> Translate(string name)
 				{
 						var pokemon = await GetPokemonAsync(name);
+					
+						if(pokemon is null)
+						{
+								return null;
+						}
+
 						var result = new GetResponse
 						{
 								Habitat = pokemon.Habitat,
@@ -56,7 +72,7 @@ namespace Pokedex.Api.Service
 						}
 						catch (Exception ex)
 						{
-								//todo Log
+								logger.LogError(ex, ex.Message);
 						}
 
 						return result;

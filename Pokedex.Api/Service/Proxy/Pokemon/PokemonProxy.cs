@@ -21,6 +21,12 @@ namespace Pokedex.Api.Service.Proxy.Pokemon
 				{
 						var httpClient = httpClientFactory.CreateClient();
 						var httpResponse = await httpClient.GetAsync($"{baseUrl}v2/pokemon-species/{name}");
+					
+						if (httpResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
+						{
+								return null;
+						}
+
 						var json = await httpResponse.Content.ReadAsStringAsync();
 						return JsonConvert.DeserializeObject<PokemonGetResponse>(json);
 				}
