@@ -13,11 +13,11 @@ namespace Pokedex.Api.Service
 		{
 				private readonly IPokemonProxy pokemonProxy;
 				private readonly IFuntranslationsProxy funtranslationsProxy;
-				private readonly ILogger<PokemonService> logger;
+				private readonly ILogger<IPokemonService> logger;
 
 				public PokemonService(IPokemonProxy pokemonProxy,
-						IFuntranslationsProxy funtranslationsProxy,
-						ILogger<PokemonService> logger)
+																IFuntranslationsProxy funtranslationsProxy,
+																ILogger<IPokemonService> logger)
 				{
 						this.pokemonProxy = pokemonProxy;
 						this.funtranslationsProxy = funtranslationsProxy;
@@ -68,7 +68,7 @@ namespace Pokedex.Api.Service
 						{
 								string normalDescription = RemoveNewLine(serviceResult.Result.Description);
 
-								if (serviceResult.Result.Habitat == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
+								if (serviceResult.Result.Habitat.ToLower() == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
 								{
 										result.Description = (await funtranslationsProxy.GetYodaTranslation(normalDescription)).Contents.Translated;
 								}
