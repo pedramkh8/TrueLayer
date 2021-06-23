@@ -25,8 +25,8 @@ namespace Pokedex.Api.Service
 
 						return new GetResponse
 						{
-								Description = result.FlavorTextEntries.Single().FlavorText,
-								Habitat = result.EvolutionChain.Habitat.Name,
+								Description = result.FlavorTextEntries.FirstOrDefault()?.FlavorText,
+								Habitat = result.Habitat?.Name,
 								IsLegendary = result.IsLegendary,
 								Name = result.Name
 						};
