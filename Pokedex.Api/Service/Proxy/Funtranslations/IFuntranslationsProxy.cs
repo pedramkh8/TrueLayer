@@ -2,7 +2,7 @@
 
 namespace Pokedex.Api.Service.Proxy.Funtranslations
 {
-		interface IFuntranslationsProxy
+		internal interface IFuntranslationsProxy
 		{
 				Task<TranslationResponse> GetShakespeareTranslation(string description);
 

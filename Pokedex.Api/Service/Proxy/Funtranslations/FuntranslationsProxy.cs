@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Api.Service.Proxy.Shakespeare
 {
-		public class FuntranslationsProxy: IFuntranslationsProxy
+		internal class FuntranslationsProxy: IFuntranslationsProxy
 		{
 				private readonly IHttpClientFactory httpClientFactory;
 				private readonly string baseUrl;
