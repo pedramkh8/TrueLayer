@@ -68,4 +68,7 @@ The result field has 4 fields:
   
 ## Docker
   The project also contains a simple docker file for dockerizing the API.
+
+## Future Suggestion
+  - Add caching for calling the third partie APIs.
    
