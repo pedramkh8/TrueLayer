@@ -40,7 +40,7 @@ namespace Pokedex.Api.Service
 
 						return new ServiceResult<PokemonResponse>(new PokemonResponse
 						{
-								Description = result.FlavorTextEntries.FirstOrDefault()?.FlavorText,
+								Description = result.FlavorTextEntries.FirstOrDefault(x => x.Language.Name.ToLower() == Language.en.ToString())?.FlavorText,
 								Habitat = result.Habitat?.Name,
 								IsLegendary = result.IsLegendary,
 								Name = result.Name
@@ -68,7 +68,7 @@ namespace Pokedex.Api.Service
 						{
 								string normalDescription = RemoveNewLine(serviceResult.Result.Description);
 
-								if (serviceResult.Result.Habitat.ToLower() == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
+								if (serviceResult.Result.Habitat?.ToLower() == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
 								{
 										result.Description = (await funtranslationsProxy.GetYodaTranslation(normalDescription)).Contents.Translated;
 								}

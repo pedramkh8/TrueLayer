@@ -20,10 +20,16 @@ namespace Pokedex.Api.Service.Proxy.Pokemon.Dto
 				public Habitat Habitat { get; set; }
 		}
 
-		public class FlavorTextEntry
+		internal class FlavorTextEntry
 		{
 				[JsonProperty("flavor_text")]
 				public string FlavorText { get; set; }
+				public Language Language { get; set; }
+		}
+
+		internal class Language
+		{
+				public string Name { get; set; }
 		}
 
 		internal class Habitat

@@ -44,7 +44,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
@@ -95,7 +99,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
@@ -146,7 +154,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
@@ -197,7 +209,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
@@ -248,7 +264,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
@@ -299,7 +319,11 @@ namespace Pokedex.UnitTest.Service.PokemonService
 								{
 										new FlavorTextEntry
 										{
-												FlavorText= "some FlavorTextEntries"
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
 										}
 								},
 								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
