@@ -2,7 +2,7 @@
 A simple Pokemon Rest API using .Net 5 for TrueLayer.
 
 ## Prerequistes
-- .NET 5
+- .NET 5 https://dotnet.microsoft.com/download/dotnet/5.0
 
 ## Third Parties
 - .NLog 4.7.10
