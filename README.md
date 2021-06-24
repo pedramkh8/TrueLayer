@@ -26,7 +26,7 @@ You can also browse this link to discover the API: https://localhost:5001/Swagge
 
 ## About APIs
 This rest API consist of two Get APIs:
-All responses consist of a json consist of result, success, and errors:
+All APIs return json. Response contains result, success, and errors:
 - Success is a boolan field and indicate that the request is succesful or not. (If the success is true, result has value and otherwise errors has value)
 - Result consist of the return values of the API.
 - Errors which is a list of object, consist of message and type. Message is the description of error and type is a unique number for type of errors.
