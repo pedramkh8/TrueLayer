@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Api", "Pokedex.Api\Pokedex.Api.csproj", "{01DF50A4-AC35-4332-B08F-9EE0ED709E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.Api", "Pokedex.Api\Pokedex.Api.csproj", "{01DF50A4-AC35-4332-B08F-9EE0ED709E1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.UnitTest", "Pokedex.UnitTest\Pokedex.UnitTest.csproj", "{8EE2B596-7133-4120-BD5D-7D65AC244A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.UnitTest", "Pokedex.UnitTest\Pokedex.UnitTest.csproj", "{8EE2B596-7133-4120-BD5D-7D65AC244A31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{CA3C8002-F158-48DC-9366-BF3C917FA96C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\Build.gif = ..\..\..\Downloads\Build.gif
+		..\..\..\Downloads\Test.gif = ..\..\..\Downloads\Test.gif
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

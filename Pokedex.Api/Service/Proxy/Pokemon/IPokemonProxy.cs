@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Api.Service.Proxy.Pokemon
 {
-		internal interface IPokemonProxy
-		{
-				Task<PokemonGetResponse> GetAsync(string name);
-		}
+    internal interface IPokemonProxy
+    {
+        Task<PokemonGetResponse> GetAsync(string name);
+    }
 }

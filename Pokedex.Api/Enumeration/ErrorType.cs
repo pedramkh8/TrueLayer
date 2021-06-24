@@ -1,8 +1,8 @@
 ﻿namespace Pokedex.Api.Enumeration
 {
-		public enum ErrorType
-		{
-				InvalidName,
-				PokemonNotFound
-		}
+    public enum ErrorType
+    {
+        InvalidName,
+        PokemonNotFound
+    }
 }

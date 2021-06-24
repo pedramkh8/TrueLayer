@@ -9,85 +9,85 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Api.Service
 {
-		internal class PokemonService : IPokemonService
-		{
-				private readonly IPokemonProxy pokemonProxy;
-				private readonly IFuntranslationsProxy funtranslationsProxy;
-				private readonly ILogger<IPokemonService> logger;
+    internal class PokemonService : IPokemonService
+    {
+        private readonly IPokemonProxy pokemonProxy;
+        private readonly IFuntranslationsProxy funtranslationsProxy;
+        private readonly ILogger<IPokemonService> logger;
 
-				public PokemonService(IPokemonProxy pokemonProxy,
-																IFuntranslationsProxy funtranslationsProxy,
-																ILogger<IPokemonService> logger)
-				{
-						this.pokemonProxy = pokemonProxy;
-						this.funtranslationsProxy = funtranslationsProxy;
-						this.logger = logger;
-				}
+        public PokemonService(IPokemonProxy pokemonProxy,
+                                IFuntranslationsProxy funtranslationsProxy,
+                                ILogger<IPokemonService> logger)
+        {
+            this.pokemonProxy = pokemonProxy;
+            this.funtranslationsProxy = funtranslationsProxy;
+            this.logger = logger;
+        }
 
-				public async Task<ServiceResult<PokemonResponse>> GetPokemonAsync(string name)
-				{
-						if (string.IsNullOrEmpty(name))
-						{
-								return new ServiceResult<PokemonResponse>(new ErrorResult(ErrorType.InvalidName));
-						}
+        public async Task<ServiceResult<PokemonResponse>> GetPokemonAsync(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return new ServiceResult<PokemonResponse>(new ErrorResult(ErrorType.InvalidName));
+            }
 
-						var result = await pokemonProxy.GetAsync(name);
+            var result = await pokemonProxy.GetAsync(name);
 
-						if (result is null)
-						{
-								return new ServiceResult<PokemonResponse>(new ErrorResult(ErrorType.PokemonNotFound));
-						}
+            if (result is null)
+            {
+                return new ServiceResult<PokemonResponse>(new ErrorResult(ErrorType.PokemonNotFound));
+            }
 
-						return new ServiceResult<PokemonResponse>(new PokemonResponse
-						{
-								Description = result.FlavorTextEntries?.FirstOrDefault(x => x.Language?.Name?.ToLower() == Language.en.ToString())?.FlavorText,
-								Habitat = result.Habitat?.Name,
-								IsLegendary = result.IsLegendary,
-								Name = result.Name
-						});
-				}
+            return new ServiceResult<PokemonResponse>(new PokemonResponse
+            {
+                Description = result.FlavorTextEntries?.FirstOrDefault(x => x.Language?.Name?.ToLower() == Language.en.ToString())?.FlavorText,
+                Habitat = result.Habitat?.Name,
+                IsLegendary = result.IsLegendary,
+                Name = result.Name
+            });
+        }
 
-				public async Task<ServiceResult<PokemonResponse>> TranslateAsync(string name)
-				{
-						var serviceResult = await GetPokemonAsync(name);
+        public async Task<ServiceResult<PokemonResponse>> TranslateAsync(string name)
+        {
+            var serviceResult = await GetPokemonAsync(name);
 
-						if (!serviceResult.Success)
-						{
-								return new ServiceResult<PokemonResponse>(serviceResult.Errors);
-						}
+            if (!serviceResult.Success)
+            {
+                return new ServiceResult<PokemonResponse>(serviceResult.Errors);
+            }
 
-						var result = new PokemonResponse
-						{
-								Habitat = serviceResult.Result.Habitat,
-								IsLegendary = serviceResult.Result.IsLegendary,
-								Name = serviceResult.Result.Name,
-								Description = serviceResult.Result.Description
-						};
+            var result = new PokemonResponse
+            {
+                Habitat = serviceResult.Result.Habitat,
+                IsLegendary = serviceResult.Result.IsLegendary,
+                Name = serviceResult.Result.Name,
+                Description = serviceResult.Result.Description
+            };
 
-						try
-						{
-								string normalDescription = RemoveNewLine(serviceResult.Result.Description);
+            try
+            {
+                string normalDescription = RemoveNewLine(serviceResult.Result.Description);
 
-								if (serviceResult.Result.Habitat?.ToLower() == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
-								{
-										result.Description = (await funtranslationsProxy.GetYodaTranslation(normalDescription)).Contents.Translated;
-								}
-								else
-								{
-										result.Description = (await funtranslationsProxy.GetShakespeareTranslation(normalDescription)).Contents.Translated;
-								}
-						}
-						catch (Exception ex)
-						{
-								logger.LogError(ex, ex.Message);
-						}
+                if (serviceResult.Result.Habitat?.ToLower() == Habitat.cave.ToString() || serviceResult.Result.IsLegendary)
+                {
+                    result.Description = (await funtranslationsProxy.GetYodaTranslation(normalDescription)).Contents.Translated;
+                }
+                else
+                {
+                    result.Description = (await funtranslationsProxy.GetShakespeareTranslation(normalDescription)).Contents.Translated;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+            }
 
-						return new ServiceResult<PokemonResponse>(result);
-				}
+            return new ServiceResult<PokemonResponse>(result);
+        }
 
-				private string RemoveNewLine(string text)
-				{
-						return System.Text.RegularExpressions.Regex.Replace(text, @"\t|\n|\r", "");
-				}
-		}
+        private string RemoveNewLine(string text)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(text, @"\t|\n|\r", "");
+        }
+    }
 }
