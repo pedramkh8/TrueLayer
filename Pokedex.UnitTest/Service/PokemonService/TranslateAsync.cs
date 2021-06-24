@@ -38,24 +38,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse pokemon = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "Cave",
-                },
-                Id = 1,
-                IsLegendary = false,
-                Name = name
-            };
+						PokemonGetResponse pokemon = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "Cave",
+								},
+								Id = 1,
+								IsLegendary = false,
+								Name = name
+						};
 
             TranslationResponse translatedText = new TranslationResponse
             {
@@ -89,24 +93,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse pokemon = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "test",
-                },
-                Id = 1,
-                IsLegendary = true,
-                Name = name
-            };
+						PokemonGetResponse pokemon = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "test",
+								},
+								Id = 1,
+								IsLegendary = true,
+								Name = name
+						};
 
             TranslationResponse translatedText = new TranslationResponse
             {
@@ -140,24 +148,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse pokemon = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "test",
-                },
-                Id = 1,
-                IsLegendary = false,
-                Name = name
-            };
+						PokemonGetResponse pokemon = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "test",
+								},
+								Id = 1,
+								IsLegendary = false,
+								Name = name
+						};
 
             TranslationResponse translatedText = new TranslationResponse
             {
@@ -191,24 +203,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse pokemon = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "test",
-                },
-                Id = 1,
-                IsLegendary = true,
-                Name = name
-            };
+						PokemonGetResponse pokemon = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "test",
+								},
+								Id = 1,
+								IsLegendary = true,
+								Name = name
+						};
 
             TranslationResponse translatedText = new TranslationResponse
             {
@@ -242,24 +258,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse pokemon = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "test",
-                },
-                Id = 1,
-                IsLegendary = false,
-                Name = name
-            };
+						PokemonGetResponse pokemon = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "test",
+								},
+								Id = 1,
+								IsLegendary = false,
+								Name = name
+						};
 
             TranslationResponse translatedText = new TranslationResponse
             {
@@ -293,24 +313,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "";
 
-            PokemonGetResponse response = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "some Habitat",
-                },
-                Id = 1,
-                IsLegendary = true,
-                Name = name
-            };
+						PokemonGetResponse response = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "some Habitat",
+								},
+								Id = 1,
+								IsLegendary = true,
+								Name = name
+						};
 
             //Act
             var result = await pokemonService.TranslateAsync(name);

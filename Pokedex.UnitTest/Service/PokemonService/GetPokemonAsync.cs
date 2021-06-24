@@ -37,24 +37,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "wormadam";
 
-            PokemonGetResponse response = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "some Habitat",
-                },
-                Id = 1,
-                IsLegendary = true,
-                Name = name
-            };
+						PokemonGetResponse response = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "some Habitat",
+								},
+								Id = 1,
+								IsLegendary = true,
+								Name = name
+						};
 
             mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
 
@@ -74,24 +78,28 @@ namespace Pokedex.UnitTest.Service.PokemonService
             //Arrange
             string name = "";
 
-            PokemonGetResponse response = new PokemonGetResponse
-            {
-                FlavorTextEntries = new List<FlavorTextEntry>
-                {
-                    new FlavorTextEntry
-                    {
-                        FlavorText= "some FlavorTextEntries"
-                    }
-                },
-                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-                {
-                    Id = 1,
-                    Name = "some Habitat",
-                },
-                Id = 1,
-                IsLegendary = true,
-                Name = name
-            };
+						PokemonGetResponse response = new PokemonGetResponse
+						{
+								FlavorTextEntries = new List<FlavorTextEntry>
+								{
+										new FlavorTextEntry
+										{
+												FlavorText= "some FlavorTextEntries",
+												Language = new Api.Service.Proxy.Pokemon.Dto.Language
+												{
+													Name= Api.Enumeration.Language.en.ToString()
+												}
+										}
+								},
+								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+								{
+										Id = 1,
+										Name = "some Habitat",
+								},
+								Id = 1,
+								IsLegendary = true,
+								Name = name
+						};
 
             mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
 
