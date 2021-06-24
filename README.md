@@ -16,7 +16,7 @@ All we need is starting the API project:
 Open the command prompt (in windows) an run the command "dotnet run" in this path: \TrueLayer\Pokedex.Api
 
 After runnin the app the api will host on two differents port:
-https://localhost:5001
+https://localhost:5001 ,
 http://localhost:5000
 
 You can also browse this link to discover the API: https://localhost:5001/Swagger
@@ -29,7 +29,7 @@ All responses consist of a json consist of result, success, and errors:
 - Errors which is a list of object, consist of message and type. Message is the description of error and type is a unique number for type of errors.
 
 - The first one receive a Pokemon name, returns standard Pokemon description and additional information.
-   Example EndPoint:
+   Example EndPoint:    
   /HTTP/GET  /pokemon/<pokemon name>
   
 The result field has 4 field:
