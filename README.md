@@ -12,8 +12,7 @@ A simple Pokemon Rest API using .Net 5 for TrueLayer.
 - Moq 4.16.1
 
 ## Running Pokedex
-All we need is starting the API project:
-Open the command prompt (in windows) an run the command "dotnet run" in this path: \TrueLayer\Pokedex.Api
+Clone the project. Open the command prompt (in windows) an run the command "dotnet run" in this path: \TrueLayer\Pokedex.Api
 
 After runnin the app the api will host on two differents port:
 https://localhost:5001 ,
@@ -22,6 +21,8 @@ http://localhost:5000
   [![Run API](./Image/Build.gif)]()
 
 You can also browse this link to discover the API: https://localhost:5001/Swagger
+
+ [![Call with Swagger](./Image/Swagger.gif)]()
 
 ## About APIs
 This rest API consist of two Get APIs:
