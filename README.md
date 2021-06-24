@@ -55,4 +55,10 @@ The result field has 4 fields:
  You can go to the test explorer window in Visual Studio and push the run button, or run the command "dotnet test" in this path: \TrueLayer\Pokedex.UnitTest
    
    [![Run Unit Tests](./Image/Test.gif)]()
+  
+## CI/CD
+  I added Action to github to building and running tests every time the code pushed to the repository. If all the checks (building and running tests) passed, PR can be merged to the main branch.
+  
+## Docker
+  The project also contains a simple docker file for dockerizing the API.
    
