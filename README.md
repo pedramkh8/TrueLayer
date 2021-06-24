@@ -31,21 +31,21 @@ All APIs return json. Response contains result, success, and errors:
 - Result consist of the return values of the API.
 - Errors which is a list of object, consist of message and type. Message is the description of error and type is a unique number for type of errors.
 
-- The first one receive a Pokemon name, returns standard Pokemon description and additional information.
+### The first one receive a Pokemon name, returns standard Pokemon description and additional information.
    Example EndPoint:    
   /HTTP/GET  /pokemon/<pokemon name>
   
-The result field has 4 field:
+The result field has 4 fields:
   - Pokemon's Name  (string)
   - Pokemon's standard description  (string)
   - Pokemon's habitat  (string)
   - Pokemon's status  (a boolean shows that is the pokemon legandary or not)
 
-- The second one receive a Pokemon name, return translated Pokemon description and other basic information.
+### The second one receive a Pokemon name, return translated Pokemon description and other basic information.
    Example EndPoint:
    /HTTP/GET  /pokemon/translated/<pokemon name>
    
- The result field has 4 field:
+ The result field has 4 fields:
   - Pokemon's Name  (string)
   - Pokemon's standard description  (string)
   - Pokemon's habitat  (string)
