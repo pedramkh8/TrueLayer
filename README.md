@@ -19,6 +19,8 @@ After runnin the app the api will host on two differents port:
 https://localhost:5001 ,
 http://localhost:5000
 
+  [![Run API](./Image/Build.gif)]()
+
 You can also browse this link to discover the API: https://localhost:5001/Swagger
 
 ## About APIs
@@ -50,4 +52,6 @@ The result field has 4 field:
    
 ## Running Unit Tests
  You can go to the test explorer window in Visual Studio and push the run button, or run the command "dotnet test" in this path: \TrueLayer\Pokedex.UnitTest
+   
+   [![Run Unit Tests](./Image/Test.gif)]()
    
