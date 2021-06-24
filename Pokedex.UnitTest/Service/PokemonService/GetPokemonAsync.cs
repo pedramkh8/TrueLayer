@@ -12,118 +12,118 @@ using Xunit;
 
 namespace Pokedex.UnitTest.Service.PokemonService
 {
-		public class GetPokemonAsync
-		{
-				private readonly Moq.Mock<IPokemonProxy> mockedPokemonProxy;
-				private readonly Moq.Mock<IFuntranslationsProxy> mockedFuntranslationsProxy;
-				private readonly Moq.Mock<ILogger<IPokemonService>> mockedLogger;
-				private readonly Api.Service.PokemonService pokemonService;
+    public class GetPokemonAsync
+    {
+        private readonly Moq.Mock<IPokemonProxy> mockedPokemonProxy;
+        private readonly Moq.Mock<IFuntranslationsProxy> mockedFuntranslationsProxy;
+        private readonly Moq.Mock<ILogger<IPokemonService>> mockedLogger;
+        private readonly Api.Service.PokemonService pokemonService;
 
-				public GetPokemonAsync()
-				{
-						mockedPokemonProxy = new Moq.Mock<IPokemonProxy>();
-						mockedFuntranslationsProxy = new Moq.Mock<IFuntranslationsProxy>();
-						mockedLogger = new Moq.Mock<ILogger<IPokemonService>>();
+        public GetPokemonAsync()
+        {
+            mockedPokemonProxy = new Moq.Mock<IPokemonProxy>();
+            mockedFuntranslationsProxy = new Moq.Mock<IFuntranslationsProxy>();
+            mockedLogger = new Moq.Mock<ILogger<IPokemonService>>();
 
-						pokemonService = new Api.Service.PokemonService(mockedPokemonProxy.Object,
-																																		mockedFuntranslationsProxy.Object,
-																																		mockedLogger.Object
-																																		);
-				}
+            pokemonService = new Api.Service.PokemonService(mockedPokemonProxy.Object,
+                                                                    mockedFuntranslationsProxy.Object,
+                                                                    mockedLogger.Object
+                                                                    );
+        }
 
-				[Fact]
-				public async Task RightScenario()
-				{
-						//Arrange
-						string name = "wormadam";
+        [Fact]
+        public async Task RightScenario()
+        {
+            //Arrange
+            string name = "wormadam";
 
-						PokemonGetResponse response = new PokemonGetResponse
-						{
-								FlavorTextEntries = new List<FlavorTextEntry>
-								{
-										new FlavorTextEntry
-										{
-												FlavorText= "some FlavorTextEntries"
-										}
-								},
-								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-								{
-										Id = 1,
-										Name = "some Habitat",
-								},
-								Id = 1,
-								IsLegendary = true,
-								Name = name
-						};
+            PokemonGetResponse response = new PokemonGetResponse
+            {
+                FlavorTextEntries = new List<FlavorTextEntry>
+                {
+                    new FlavorTextEntry
+                    {
+                        FlavorText= "some FlavorTextEntries"
+                    }
+                },
+                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+                {
+                    Id = 1,
+                    Name = "some Habitat",
+                },
+                Id = 1,
+                IsLegendary = true,
+                Name = name
+            };
 
-						mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
+            mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
 
-						//Act
-						var result = await pokemonService.GetPokemonAsync(name);
+            //Act
+            var result = await pokemonService.GetPokemonAsync(name);
 
-						//Assert
-						Assert.True(result.Success);
-						Assert.Null(result.Errors);
-						Assert.NotNull(result.Result);
-						mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Once);
-				}
+            //Assert
+            Assert.True(result.Success);
+            Assert.Null(result.Errors);
+            Assert.NotNull(result.Result);
+            mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Once);
+        }
 
-				[Fact]
-				public async Task FailedScenario_Name_Is_Empty()
-				{
-						//Arrange
-						string name = "";
+        [Fact]
+        public async Task FailedScenario_Name_Is_Empty()
+        {
+            //Arrange
+            string name = "";
 
-						PokemonGetResponse response = new PokemonGetResponse
-						{
-								FlavorTextEntries = new List<FlavorTextEntry>
-								{
-										new FlavorTextEntry
-										{
-												FlavorText= "some FlavorTextEntries"
-										}
-								},
-								Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
-								{
-										Id = 1,
-										Name = "some Habitat",
-								},
-								Id = 1,
-								IsLegendary = true,
-								Name = name
-						};
+            PokemonGetResponse response = new PokemonGetResponse
+            {
+                FlavorTextEntries = new List<FlavorTextEntry>
+                {
+                    new FlavorTextEntry
+                    {
+                        FlavorText= "some FlavorTextEntries"
+                    }
+                },
+                Habitat = new Api.Service.Proxy.Pokemon.Dto.Habitat
+                {
+                    Id = 1,
+                    Name = "some Habitat",
+                },
+                Id = 1,
+                IsLegendary = true,
+                Name = name
+            };
 
-						mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
+            mockedPokemonProxy.Setup(x => x.GetAsync(name)).ReturnsAsync(response);
 
-						//Act
-						var result = await pokemonService.GetPokemonAsync(name);
+            //Act
+            var result = await pokemonService.GetPokemonAsync(name);
 
-						//Assert
-						Assert.False(result.Success);
-						Assert.NotNull(result.Errors);
-						Assert.Null(result.Result);
-						Assert.Single(result.Errors);
-						Assert.Equal(ErrorType.InvalidName, result.Errors.Single().Type);
-						mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Never);
-				}
+            //Assert
+            Assert.False(result.Success);
+            Assert.NotNull(result.Errors);
+            Assert.Null(result.Result);
+            Assert.Single(result.Errors);
+            Assert.Equal(ErrorType.InvalidName, result.Errors.Single().Type);
+            mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Never);
+        }
 
-				[Fact]
-				public async Task FailedScenario_Pokemon_Not_Found()
-				{
-						//Arrange
-						string name = "something";
-						mockedPokemonProxy.Setup(x => x.GetAsync(It.IsAny<string>())).ReturnsAsync(null as PokemonGetResponse);
+        [Fact]
+        public async Task FailedScenario_Pokemon_Not_Found()
+        {
+            //Arrange
+            string name = "something";
+            mockedPokemonProxy.Setup(x => x.GetAsync(It.IsAny<string>())).ReturnsAsync(null as PokemonGetResponse);
 
-						//Act
-						var result = await pokemonService.GetPokemonAsync(name);
+            //Act
+            var result = await pokemonService.GetPokemonAsync(name);
 
-						//Assert
-						Assert.False(result.Success);
-						Assert.NotNull(result.Errors);
-						Assert.Null(result.Result);
-						Assert.Single(result.Errors);
-						Assert.Equal(ErrorType.PokemonNotFound, result.Errors.Single().Type);
-						mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Once);
-				}
-		}
+            //Assert
+            Assert.False(result.Success);
+            Assert.NotNull(result.Errors);
+            Assert.Null(result.Result);
+            Assert.Single(result.Errors);
+            Assert.Equal(ErrorType.PokemonNotFound, result.Errors.Single().Type);
+            mockedPokemonProxy.Verify(x => x.GetAsync(name), Times.Once);
+        }
+    }
 }

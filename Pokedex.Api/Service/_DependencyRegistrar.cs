@@ -8,14 +8,14 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Pokedex.Api.Service
 {
-		internal static class DependencyRegistrar
-		{
-				internal static IServiceCollection AddPokedexService(this IServiceCollection service)
-				{
-						service.AddScoped<IFuntranslationsProxy, FuntranslationsProxy>();
-						service.AddScoped<IPokemonProxy, PokemonProxy>();
-						service.AddScoped<IPokemonService, PokemonService>();
-						return service;
-				}
-		}
+    internal static class DependencyRegistrar
+    {
+        internal static IServiceCollection AddPokedexService(this IServiceCollection service)
+        {
+            service.AddScoped<IFuntranslationsProxy, FuntranslationsProxy>();
+            service.AddScoped<IPokemonProxy, PokemonProxy>();
+            service.AddScoped<IPokemonService, PokemonService>();
+            return service;
+        }
+    }
 }

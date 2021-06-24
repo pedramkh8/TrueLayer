@@ -9,40 +9,40 @@ using Pokedex.Api.Service;
 
 namespace Pokedex.Api
 {
-		public class Startup
-		{
-				public void ConfigureServices(IServiceCollection services)
-				{
-						services.AddControllers();
-						services.AddHttpClient();
-						services.AddPokedexService();
-						services.AddSwaggerGen(c =>
-						{
-								c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pokedex", Version = "v1" });
-						});
-				}
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddHttpClient();
+            services.AddPokedexService();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pokedex", Version = "v1" });
+            });
+        }
 
-				public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
-				{
-						if (env.IsDevelopment())
-						{
-								app.UseDeveloperExceptionPage();
-								app.UseSwagger();
-								app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokedex v1"));
-						}
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokedex v1"));
+            }
 
-						app.UseMiddleware<ErrorLoggingMiddleware>();
+            app.UseMiddleware<ErrorLoggingMiddleware>();
 
-						app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-						app.UseRouting();
+            app.UseRouting();
 
-						app.UseEndpoints(endpoints =>
-						{
-								endpoints.MapControllers();
-						});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
-						logger.LogInformation("Pokedex Started!");
-				}
-		}
+            logger.LogInformation("Pokedex Started!");
+        }
+    }
 }
