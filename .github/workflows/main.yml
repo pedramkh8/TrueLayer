@@ -23,6 +23,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test Pokedex.UnitTest/Pokedex.UnitTest.csproj --no-build --verbosity normal
     
    
     
