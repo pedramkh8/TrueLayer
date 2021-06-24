@@ -40,7 +40,7 @@ namespace Pokedex.Api.Service
 
 						return new ServiceResult<PokemonResponse>(new PokemonResponse
 						{
-								Description = result.FlavorTextEntries.FirstOrDefault(x => x.Language.Name.ToLower() == Language.en.ToString())?.FlavorText,
+								Description = result.FlavorTextEntries?.FirstOrDefault(x => x.Language?.Name?.ToLower() == Language.en.ToString())?.FlavorText,
 								Habitat = result.Habitat?.Name,
 								IsLegendary = result.IsLegendary,
 								Name = result.Name
