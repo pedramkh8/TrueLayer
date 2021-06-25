@@ -70,5 +70,5 @@ The result field has 4 fields:
   The project also contains a simple docker file for dockerizing the API.
 
 ## Future Suggestion
-  - Add caching for calling the third partie APIs.
+  - Add caching for calling the third party APIs.
    
